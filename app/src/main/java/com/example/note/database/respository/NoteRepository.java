@@ -1,47 +1,54 @@
 package com.example.note.database.respository;
 
-
 import android.app.Application;
-import androidx.lifecycle.LiveData;
+import android.content.Context;
+
 
 import com.example.note.database.NoteDatabase;
 import com.example.note.database.dao.NoteDao;
 import com.example.note.model.Note;
 
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Completable;
-import io.reactivex.rxjava3.core.Flowable;
+
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
+
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class NoteRepository {
 
     private final NoteDao noteDao;
-
-    public NoteRepository(Application application) {
-        NoteDatabase noteDatabase = NoteDatabase.getInstance(application);
+    private final CompositeDisposable disposables = new CompositeDisposable();
+    public NoteRepository(Context app) {
+        NoteDatabase noteDatabase = NoteDatabase.getInstance(app);
         noteDao = noteDatabase.getNoteDao();
     }
 
     public Completable insertNote(Note note) {
-        return Completable.fromAction(() -> noteDao.insertNote(note))
-                .subscribeOn(Schedulers.io());
+        return Completable.fromAction(() -> noteDao.insertNote(note));
     }
-
     public Completable updateNote(Note note) {
-        return Completable.fromAction(() -> noteDao.updateNote(note))
+        return Completable.fromRunnable(() -> noteDao.updateNote(note))
                 .subscribeOn(Schedulers.io());
     }
 
     public Completable deleteNote(Note note) {
-        return Completable.fromAction(() -> noteDao.deleteNote(note))
+        return Completable.fromRunnable(() -> noteDao.deleteNote(note))
                 .subscribeOn(Schedulers.io());
     }
 
-    public Flowable<List<Note>> getAllNote() {
+    public Observable<List<Note>> getAllNotes() {
         return noteDao.getAllNote()
+                .toObservable()
+                .subscribeOn(Schedulers.io());
+    }
+
+    public Observable<List<Note>> getByDate(Long stratDate, Long endDate) {
+        return noteDao.getByDate(stratDate,endDate)
+                .toObservable()
                 .subscribeOn(Schedulers.io());
     }
 }

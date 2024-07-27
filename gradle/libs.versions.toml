@@ -11,7 +11,9 @@ constraintlayout = "2.1.4"
 roomRxjava3 = "2.6.1"
 roomVersion = "2.2.5"
 rxandroid = "3.0.1"
+rxandroidVersion = "3.0.2"
 rxjava = "3.1.6"
+rxjavaVersion = "3.1.6"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -27,10 +29,13 @@ constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayo
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomVersion" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomVersion" }
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomVersion" }
+room-rxjava2 = { module = "androidx.room:room-rxjava2", version.ref = "roomVersion" }
 room-rxjava3 = { module = "androidx.room:room-rxjava3", version.ref = "roomRxjava3" }
 room-rxjava3-v225 = { module = "androidx.room:room-rxjava3", version.ref = "roomVersion" }
 rxandroid = { module = "io.reactivex.rxjava3:rxandroid", version.ref = "rxandroid" }
 rxjava = { module = "io.reactivex.rxjava3:rxjava", version.ref = "rxjava" }
+rxjava2-rxandroid = { module = "io.reactivex.rxjava2:rxandroid", version.ref = "rxandroidVersion" }
+rxjava2-rxjava = { module = "io.reactivex.rxjava2:rxjava", version.ref = "rxjavaVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

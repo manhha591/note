@@ -19,7 +19,7 @@ import io.reactivex.rxjava3.core.Flowable;
 public interface NoteDao {
 
     @Insert
-    Completable insertNote(Note note);
+    void insertNote(Note note);
 
     @Update
     Completable updateNote(Note note);
@@ -29,6 +29,10 @@ public interface NoteDao {
 
     @Query("SELECT * FROM note_table")
     Flowable<List<Note>> getAllNote();
+
+
+    @Query("SELECT * FROM note_table WHERE date_col BETWEEN :startDate AND :endDate")
+    Flowable<List<Note>> getByDate(Long startDate, Long endDate);
 
     /* @Query("SELECT * FROM note_table WHERE title_col = :title")
     Flowable<List<Note>> getNoteByTitle(String title); */

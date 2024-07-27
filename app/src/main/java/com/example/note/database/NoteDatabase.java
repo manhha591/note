@@ -10,7 +10,7 @@ import com.example.note.database.dao.NoteDao;
 import com.example.note.model.Note;
 
 
-@Database(entities = {Note.class}, version = 1)
+@Database(entities = {Note.class}, version = 2)
 public abstract class NoteDatabase extends RoomDatabase {
 
     public abstract NoteDao getNoteDao();
