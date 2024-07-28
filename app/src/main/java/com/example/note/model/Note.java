@@ -3,6 +3,7 @@ package com.example.note.model;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
 import java.util.Calendar;
 
@@ -20,12 +21,28 @@ public class Note implements Serializable {
     private String description;
     @ColumnInfo(name = "date_col")
     private Long startDate;
+
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
+
+    // state = 0 -> chưa hoàn thành
+    // state = 1 -> đã hoàn thành
+    // state = 2 -> quá hạn
+    private  int state;
     public void setStartDate(Long startDate) {
         this.startDate = startDate;
     }
+
     public Long getStartDate() {
         return startDate;
     }
+
     public Calendar getDate() {
         if (startDate != null) {
             Calendar calendar = Calendar.getInstance();
@@ -40,7 +57,6 @@ public class Note implements Serializable {
     public void setStartDate(Calendar startDate) {
         this.startDate = startDate != null ? startDate.getTimeInMillis() : null;
     }
-
 
 
     // Constructor mặc định (không có tham số)

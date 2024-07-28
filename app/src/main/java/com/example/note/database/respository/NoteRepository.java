@@ -13,6 +13,7 @@ import java.util.List;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Completable;
 
+import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 
@@ -46,9 +47,9 @@ public class NoteRepository {
                 .subscribeOn(Schedulers.io());
     }
 
-    public Observable<List<Note>> getByDate(Long stratDate, Long endDate) {
-        return noteDao.getByDate(stratDate,endDate)
-                .toObservable()
+    public Flowable<List<Note>> getByDate(Long startDate, Long endDate) {
+        return noteDao.getByDate(startDate, endDate)
                 .subscribeOn(Schedulers.io());
     }
+
 }

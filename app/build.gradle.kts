@@ -99,4 +99,13 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
 
     implementation("com.github.myDario:DarioWeekViewDatePicker:1.0.3")
+    implementation ("androidx.work:work-runtime:2.7.1") // Kiểm tra phiên bản mới nhất trên developer.android.com
+
+    // Hilt
+    implementation ("com.google.dagger:hilt-android:2.44")
+    kapt ("com.google.dagger:hilt-compiler:2.44")
+
+    // Hilt WorkManager Integration
+    implementation ("androidx.hilt:hilt-work:1.0.0")
+    kapt ("androidx.hilt:hilt-compiler:1.0.0")
 }

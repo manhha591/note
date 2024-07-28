@@ -57,6 +57,8 @@ public class AddNoteActivity extends AppCompatActivity {
                 String description = edtNoteDes.getText().toString();
                 Note note = new Note(title, description);
                 note.setStartDate(selectedDateTime);
+                note.setState(0);
+               // note.setStartDate(System.currentTimeMillis()+6000);
                 noteViewModel.insertNote(note);
                 finish();
             }

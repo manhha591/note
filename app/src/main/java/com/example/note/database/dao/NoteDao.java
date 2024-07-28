@@ -25,7 +25,7 @@ public interface NoteDao {
     Completable updateNote(Note note);
 
     @Delete
-    Completable deleteNote(Note note);
+    void deleteNote(Note note);
 
     @Query("SELECT * FROM note_table")
     Flowable<List<Note>> getAllNote();

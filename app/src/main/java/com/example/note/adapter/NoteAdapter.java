@@ -36,6 +36,21 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
         this.onClick = onClick;
         this.onDelete = onDelete;
     }
+//    public void filter(String text) {
+//        groupTaskList.clear();
+//        if (text.isEmpty()) {
+//            groupTaskList.addAll(groupTaskListFull);
+//        } else {
+//            text = text.toLowerCase();
+//            for (String item : groupTaskListFull) {
+//                if (item.toLowerCase().contains(text)) {
+//                    groupTaskList.add(item);
+//                }
+//            }
+//        }
+//        notifyDataSetChanged();
+//    }
+
 
     public class NoteViewHolder extends RecyclerView.ViewHolder {
         private final TextView txtTitle;
